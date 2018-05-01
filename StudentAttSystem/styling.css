@@ -9,6 +9,12 @@ body{
 
 a{
   margin-bottom:0px;
+  text-decoration: none;
+  color:#2980b9;
+}
+
+a:hover{
+  color:#910B26;
 }
 
 table {
@@ -51,14 +57,7 @@ tr:nth-child(even) {
   border: #2980b9 4px solid; 
 }
 
-.homebutton{
-  text-align: left;
-  font-size: 0.9em;
-  margin-right:20px;
-  margin-bottom:-40px;
-}
-
-.signout{
+.navbar{
   text-align: right;
   font-size: 0.9em;
   margin-right:20px;

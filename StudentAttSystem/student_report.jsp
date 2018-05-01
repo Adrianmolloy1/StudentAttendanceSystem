@@ -23,15 +23,15 @@ PreparedStatement sql;
 
     <body>
         <div class="box">
-	<p class="homebutton"><a href="home.jsp" style="color:#2980b9">Home</a></p>
             <a href="home.jsp">
                 <img src="Images/GMITLogoBig.png" alt="GMIT Logo" width="600" height="200">
             </a>
-	    <p class="signout"><a href="signout.jsp" style="color:#2980b9">Sign Out</a></p>
+	    
 	    <div class="title"style="color:#2980b9">Room 506</div>
+	   <p class="navbar"><a href="home.jsp" style="margin-right:10px;">Home</a> <a href="signout.jsp">Sign Out</a></p>
  	   <div class="title"> Students Reports</div>
             
-            <div style="margin: 0px 20px 10px;">
+            <div style="margin: 10px 20px 10px;">
                 
     <%
                 try{

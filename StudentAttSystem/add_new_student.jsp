@@ -87,8 +87,8 @@ if(null!=request.getParameter("student_id")){
     // Validate lastname
     if(request.getParameter("student_id").length() == 0){
         student_id_err = "Please enter a student ID.";     
-    } else if(request.getParameter("student_id").length() < 10){
-        student_id_err = "Student ID must have at least 10 characters.";
+    } else if(request.getParameter("student_id").length() < 9){
+        student_id_err = "Student ID must have at least 9 characters.";
     } else{
         student_id = request.getParameter("student_id");
   try{

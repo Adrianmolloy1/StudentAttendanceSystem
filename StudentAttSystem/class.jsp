@@ -28,16 +28,19 @@ PreparedStatement sql;
 
     <body>
         <div class="box">
-	<p class="homebutton"><a href="home.jsp" style="color:#2980b9">Home</a></p>
+	
+
             <a href="home.jsp">
                 <img src="Images/GMITLogoBig.png" alt="GMIT Logo" width="600" height="200">
             </a>
+	  
 	    <div class="title"style="color:#2980b9">Room 506</div>
-            <p class="signout"><a href="signout.jsp" style="color:#2980b9">Sign Out</a></p>
- 	    <a href="student_report.jsp" style="color:#2980b9">Student Reports</a>
+	    <p class="navbar"><a href="home.jsp" style="margin-right:10px;">Home</a> <a href="student_report.jsp" style="margin-right:10px;" >Student Reports</a> <a href="signout.jsp">Sign Out</a></p>
+
+            
             <div class="title" style="margin-bottom:10px;">Lecturer: <%= session.getAttribute("firstname")%> <%= session.getAttribute("lastname")%></div>
            <div class="title">Class: <%=class_name%></div>
-            <div style="margin: 0px 20px 10px;">
+            <div style="margin: 10px 20px 10px;">
                 
     <%
                 try{
@@ -55,8 +58,8 @@ PreparedStatement sql;
                                     + sqlRS.getString("Firstname") + " " + sqlRS.getString("Lastname") + "</a></td>"
                                     + "<td>" + sqlRS.getString("Student_ID") + "</td>"
                                     + "<td>" + sqlRS.getString("RFID") + "</td>"
-                                    + "<td style='width:10%'><a href='edit_student.jsp?id=" + class_id + "&name="+ class_name +"&sid=" + sqlRS.getString("ID") + "' style='color:#2980b9'>Edit</a></td>"
-                                    + "<td style='width:10%'><a href='remove_student.jsp?id=" + class_id + "&name="+ class_name +"&sid=" + sqlRS.getString("ID") + "' style='color:#2980b9'>Remove</a></td>"
+                                    + "<td style='width:10%'><a href='edit_student.jsp?id=" + class_id + "&name="+ class_name +"&sid=" + sqlRS.getString("ID") + "'>Edit</a></td>"
+                                    + "<td style='width:10%'><a href='remove_student.jsp?id=" + class_id + "&name="+ class_name +"&sid=" + sqlRS.getString("ID") + "'>Remove</a></td>"
                                     + "</tr>");                  
                         }
                         out.print("</table>");

@@ -29,11 +29,11 @@ PreparedStatement sql;
             <a href="home.jsp">
                 <img src="Images/GMITLogoBig.png" alt="GMIT Logo" width="600" height="200">
             </a>
+	   
 	    <div class="title"style="color:#2980b9">Room 506</div>
-            <p class="signout"><a href="signout.jsp" style="color:#2980b9">Sign Out</a></p>
-	    <a href="student_report.jsp" style="color:#2980b9">Student Reports</a>
-
-            <div class="title" style="margin-bottom:10px;">Lecturer: <%= session.getAttribute("firstname")%> <%= session.getAttribute("lastname")%></div>
+	    <p class="navbar"> <a href="student_report.jsp" style="margin-right:10px;" >Student Reports</a> <a href="signout.jsp">Sign Out</a></p>
+           
+	    <div class="title" style="margin-bottom:10px;">Lecturer: <%= session.getAttribute("firstname")%> <%= session.getAttribute("lastname")%></div>
             <div style="margin: 0px 20px 10px;">
                 <%
                try{
