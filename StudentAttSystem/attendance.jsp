@@ -38,7 +38,7 @@ PreparedStatement sql;
                 <img src="Images/GMITLogoBig.png" alt="GMIT Logo" width="600" height="200">
             </a>
 	    <p class="signout"><a href="signout.jsp" style="color:#2980b9">Sign Out</a></p>
-	    <div class="title"style="color:#2980b9">Room 508</div>
+	    <div class="title"style="color:#2980b9">Room 506</div>
             
             <div class="title" style="margin-bottom:10px;">Student: <%=students_name%></div>
 	     <div class="title"> Attendance Records</div>

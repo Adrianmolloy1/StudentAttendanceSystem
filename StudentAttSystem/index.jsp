@@ -90,7 +90,7 @@ if(null!=request.getParameter("email") && null!=request.getParameter("password")
                     <a href="home.jsp">
                         <img src="Images/GMITLogoBig.png" alt="GMIT Logo" width="600" height="200">
                     </a>
-		<div class="title"style="color:#2980b9">Room 508</div>
+		<div class="title"style="color:#2980b9">Room 506</div>
                      <input type="text" name="email" class="login_txtbox" placeholder="Email" value="<%=email%>">
                 <span class="help-block"><%=email_err%></span>
 

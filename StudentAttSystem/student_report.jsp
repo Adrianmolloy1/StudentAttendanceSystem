@@ -28,7 +28,7 @@ PreparedStatement sql;
                 <img src="Images/GMITLogoBig.png" alt="GMIT Logo" width="600" height="200">
             </a>
 	    <p class="signout"><a href="signout.jsp" style="color:#2980b9">Sign Out</a></p>
-	    <div class="title"style="color:#2980b9">Room 508</div>
+	    <div class="title"style="color:#2980b9">Room 506</div>
  	   <div class="title"> Students Reports</div>
             
             <div style="margin: 0px 20px 10px;">
@@ -36,15 +36,33 @@ PreparedStatement sql;
     <%
                 try{
                     // attempt database connection and create PreparedStatements
-			
-                    sql = conn.prepareStatement("SELECT T.FirstName, T.LastName, T.Student_ID, COUNT(*) AS DaysAttended "
-                                                    + "FROM ( "
-						    + "		SELECT COUNT(A.ID), DATE(A.Datetime) AS Date, A.Students_ID, S.FirstName, S.LastName, S.Student_ID "
-						    + "		FROM attendance A "
-						    + "		LEFT JOIN students S ON A.Students_ID = S.ID "
-						    + "		GROUP BY Date, Students_ID "
-						    + ")T "
-						    + "GROUP BY T.FirstName ");
+ 		    sql = conn.prepareStatement("SELECT T.Firstname, T.Lastname, T.Student_ID, T.Students_ID, COUNT(*) AS DaysAttended FROM "
+                                                    + "( "
+                                                    + "     SELECT COUNT(A.ID), DATE(A.Datetime) AS Date, A.Students_ID, S.FirstName, S.LastName, S.Student_ID "
+						    + "	    FROM attendance A "
+						    + "	    LEFT JOIN students S ON A.Students_ID = S.ID "
+						    + "	    GROUP BY Date, Students_ID "
+                                                    + ")T "
+                                                    + "WHERE T.Students_ID IN "
+                                                    + "( "
+                                                    + "     SELECT students_ID "
+                                                    + "     FROM class_students "
+                                                    + "     WHERE class_id IN (SELECT ID FROM classes WHERE Lecturer_ID = " + session.getAttribute("ID") + ") "
+                                                    + ") "
+                                                    + "GROUP BY T.FirstName "
+						    + "UNION "
+						    + "SELECT S2.Firstname, S2.Lastname, S2.Student_ID, S2.ID, 0 DaysAttended "
+						    + "FROM students S2 "
+						    + "WHERE S2.ID NOT IN (SELECT Students_ID FROM attendance) "
+						    + "AND S2.ID IN "
+						    + "( "
+ 						    + "     SELECT students_ID "
+ 						    + "     FROM class_students "
+						    + "     WHERE class_id IN (SELECT ID FROM classes WHERE Lecturer_ID = " + session.getAttribute("ID") + ") "
+						    + ") "
+						    + "GROUP BY S2.FirstName "
+                                                );
+
                     ResultSet sqlRS = sql.executeQuery();
                     if (sqlRS.isBeforeFirst()) {    
                         out.print("<table><tr><th>Student Name</th><th>Student ID</th><th>Attended</th></tr>");

@@ -32,7 +32,7 @@ PreparedStatement sql;
             <a href="home.jsp">
                 <img src="Images/GMITLogoBig.png" alt="GMIT Logo" width="600" height="200">
             </a>
-	    <div class="title"style="color:#2980b9">Room 508</div>
+	    <div class="title"style="color:#2980b9">Room 506</div>
             <p class="signout"><a href="signout.jsp" style="color:#2980b9">Sign Out</a></p>
  	    <a href="student_report.jsp" style="color:#2980b9">Student Reports</a>
             <div class="title" style="margin-bottom:10px;">Lecturer: <%= session.getAttribute("firstname")%> <%= session.getAttribute("lastname")%></div>
