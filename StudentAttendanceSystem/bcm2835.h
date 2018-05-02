@@ -232,7 +232,6 @@
 /// \author  Mike McCauley (mikem@airspayce.com) DO NOT CONTACT THE AUTHOR DIRECTLY: USE THE LISTS
 
 
-
 // Defines for BCM2835
 #ifndef BCM2835_H
 #define BCM2835_H
