@@ -45,7 +45,6 @@
 int lcd;
 int isValid();
 int notValid();
-int Attendance();
 void ButtonPress();
 int FullCount =0;
 
@@ -55,8 +54,6 @@ int FullCount =0;
 #define DATABASE_PASSWORD "adrian"
 
 MYSQL *mysql1;
-
-
 
 /***********Connect To Database*************/
 
@@ -134,19 +131,17 @@ int main(void)
     	if( !mfrc.PICC_ReadCardSerial())                 //If card was read
      	 continue;
 
-	rfid =  ((unsigned long)mfrc.uid.uidByte[0]) <<24;
+	rfid =  ((unsigned long)mfrc.uid.uidByte[0]) <<24;   //Reading card in array of bytes
 	rfid += ((unsigned long)mfrc.uid.uidByte[1]) <<16;
 	rfid += ((unsigned long)mfrc.uid.uidByte[2]) <<8;
 	rfid+= mfrc.uid.uidByte[3];
 	
 
      	printf("RFID CARD ADDRESS: "); 
-     	printf("\n%X\n", rfid); 		// Print UID 
+     	printf("\n%X\n", rfid); 		// Print Hexadecimal value
 	
 	
 	lcdClear(lcd);
-	
-
 	mysql_connect();
 	if (mysql1 != NULL)
 		{
@@ -159,28 +154,24 @@ int main(void)
 			   {
 				MYSQL_RES *result = mysql_store_result(mysql1);
 				  
-				//Get the number of columns
-				  int num_rows = mysql_num_rows(result);
-				  int num_fields = mysql_num_fields(result);
-				
-				 if (result && mysql_num_rows(result)>0)
+				 if (result && mysql_num_rows(result)>0)                           // If Database is not empty
 				     {
-				        MYSQL_ROW row;                                            //An array of strings
-				        while( (row = mysql_fetch_row(result)) )
+				        MYSQL_ROW row;                                            
+				        while( (row = mysql_fetch_row(result)) )                   // Fetch Data
 				          {
-				  		char *ID = row[0];
+				  		char *ID = row[0];                                
 						char *Firstname = row[1];
 						char *Lastname = row[2];
 							
 
-						printf( "Welcome %s %s\n", Firstname,Lastname);     //Print out name in database
+						printf( "Welcome %s %s\n", Firstname,Lastname);     //Print out name that is assigned the card that has been scanned
 						lcdPrintf(lcd, "Welcome %s", Firstname);
 						digitalWrite(GreenLed, LOW);
 						isValid();
 					
 						
 						char str2[80];
-						sprintf(str2, "INSERT INTO attendance (Students_ID, Datetime) VALUES ('%s', NOW())" ,ID); 
+						sprintf(str2, "INSERT INTO attendance (Students_ID, Datetime) VALUES ('%s', NOW())" ,ID);    //Insert Data into database and time that scanned
 
 						   if (!mysql_query(mysql1, str2)) 
 							{
@@ -207,11 +198,10 @@ int main(void)
 	  	
 		}
 		
-	   mysql_disconnect();	
+	mysql_disconnect();	
 		
 	lcdClear(lcd);
 	lcdPuts(lcd, "Please Scan Card");
-	
 	printf("\n\nPlease Scan Card...\n");	
   }
 
