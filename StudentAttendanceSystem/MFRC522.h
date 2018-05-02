@@ -7,8 +7,6 @@
  * Released into the public domain.
  * 
 
-
-
 -- Repurposed to fit Raspberry Pi --- 
 
  */

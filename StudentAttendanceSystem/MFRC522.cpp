@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <string>
 
-
 #define RSTPIN RPI_V2_GPIO_P1_22
 
 using namespace std;
