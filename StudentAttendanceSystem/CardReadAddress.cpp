@@ -25,7 +25,6 @@ void delay(int ms){
 #endif
 }
 
-
 #include "MFRC522.h"
 #include <stdio.h>
 #include <wiringPi.h>
