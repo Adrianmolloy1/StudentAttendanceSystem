@@ -148,9 +148,9 @@ if(null!=request.getParameter("firstname") && null!=request.getParameter("lastna
             sql = conn.prepareStatement("INSERT INTO students (firstname, lastname, email, student_id, RFID) VALUES ('"+ firstname + "', '"+ lastname + "', '"+ email + "', '"+ student_id + "', '"+ RFID + "')", Statement.RETURN_GENERATED_KEYS);
             sql.executeUpdate();
             
-            ResultSet generatedKeys = sql.getGeneratedKeys();
+            ResultSet generatedKeys = sql.getGeneratedKeys();         
             if (generatedKeys.next()) {
-                students_id = generatedKeys.getString(1);
+                students_id = generatedKeys.getString(1);       // Get ID of last INSERT
             }
             sql.close();
             

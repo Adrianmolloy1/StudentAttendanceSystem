@@ -36,7 +36,7 @@ try{
                                 + "FROM students S "
                                 + "WHERE S.ID = " + students_id);
 
-    ResultSet sqlRS = sql.executeQuery();
+    ResultSet sqlRS = sql.executeQuery();    
     
     if (sqlRS.isBeforeFirst()) { 
         sqlRS.next();
@@ -107,8 +107,8 @@ if(null!=request.getParameter("student_id")){
     // Validate lastname
     if(request.getParameter("student_id").length() == 0){
         student_id_err = "Please enter a student ID.";     
-    } else if(request.getParameter("student_id").length() < 10){
-        student_id_err = "Student ID must have at least 10 characters.";
+    } else if(request.getParameter("student_id").length() < 9){
+        student_id_err = "Student ID must have at least 9 characters.";
     } else{
         student_id = request.getParameter("student_id");
     }
@@ -152,7 +152,7 @@ if(null!=request.getParameter("firstname") && null!=request.getParameter("lastna
         <link rel="stylesheet" href="styling.css">    
     </head>
     <body>
-        <form action="edit_student.jsp?id=<%=class_id%>&name=<%=class_name%>&sid=<%=students_id%>" method="post"> 
+        <form action="edit_student.jsp?id=<%=class_id%>&name=<%=class_name%>&sid=<%=students_id%>" method="post">      
             <div class="login_box">  
 
                 <a href="home.php">

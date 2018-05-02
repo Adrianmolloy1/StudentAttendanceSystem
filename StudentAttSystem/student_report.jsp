@@ -41,13 +41,13 @@ PreparedStatement sql;
                                                     + "     SELECT COUNT(A.ID), DATE(A.Datetime) AS Date, A.Students_ID, S.FirstName, S.LastName, S.Student_ID "
 						    + "	    FROM attendance A "
 						    + "	    LEFT JOIN students S ON A.Students_ID = S.ID "
-						    + "	    GROUP BY Date, Students_ID "
+						    + "	    GROUP BY Date, Students_ID "                                                //Grouping by day that student has scanned
                                                     + ")T "
-                                                    + "WHERE T.Students_ID IN "
+                                                    + "WHERE T.Students_ID IN "                                                     
                                                     + "( "
                                                     + "     SELECT students_ID "
                                                     + "     FROM class_students "
-                                                    + "     WHERE class_id IN (SELECT ID FROM classes WHERE Lecturer_ID = " + session.getAttribute("ID") + ") "
+                                                    + "     WHERE class_id IN (SELECT ID FROM classes WHERE Lecturer_ID = " + session.getAttribute("ID") + ") "         //Where the students are in the lecturers classes
                                                     + ") "
                                                     + "GROUP BY T.FirstName "
 						    + "UNION "
@@ -60,7 +60,7 @@ PreparedStatement sql;
  						    + "     FROM class_students "
 						    + "     WHERE class_id IN (SELECT ID FROM classes WHERE Lecturer_ID = " + session.getAttribute("ID") + ") "
 						    + ") "
-						    + "GROUP BY S2.FirstName "
+						    + "GROUP BY S2.FirstName "                                             //If student is in lecturers class but not scanned yet print out 0 days attended
                                                 );
 
                     ResultSet sqlRS = sql.executeQuery();

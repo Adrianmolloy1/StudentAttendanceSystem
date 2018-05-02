@@ -41,7 +41,7 @@ if(null!=request.getParameter("student")){
             sql = conn.prepareStatement("INSERT INTO class_students (class_id, students_id) VALUES ('" + class_id + "', '" + students_id + "')");
            
             sql.executeUpdate();
-            // Redirect to home page
+            
             response.sendRedirect("class.jsp?id=" + class_id + "&name=" + class_name);  
 
             sql.close();
@@ -90,9 +90,10 @@ if(null!=request.getParameter("student")){
                         }
 
                         sqlRS.close();
-                    }catch(Exception e){
+
+                       }catch(Exception e){
                         e.printStackTrace();
-                    }
+                     }
                 %>
                 <span class="help-block"><%=students_id_err%></span>
                 
